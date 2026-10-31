@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KSS住宅サービス｜エアコンクリーニング</title>
+<meta name="description" content="KSS住宅サービスのエアコンクリーニング。誠実・親切・丁寧を大切に、エコ洗剤で小さなお子さまやペットがいるご家庭でも安心。東京都板橋区を拠点に、関東・東海・関西へ出張対応。">
+<style>
+:root{
+--blue:#0284c7; --sky:#0ea5e9; --aqua:#e0f2fe; --teal:#0d9488;
+--ink:#0f2a3d; --muted:#5b7183; --bg:#f6fafc; --card:#ffffff;
+--orange:#f97316; --line:#dbe9f1; --radius:18px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.75}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+/* Header */
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+.logo{font-weight:800;font-size:1.25rem;color:var(--blue);letter-spacing:.02em}
+.logo small{display:block;font-size:.68rem;color:var(--muted);font-weight:600;letter-spacing:.14em}
+.nav-links{display:flex;gap:22px;font-size:.92rem;font-weight:600}
+.nav-links a:hover{color:var(--sky)}
+.btn{display:inline-block;background:var(--orange);color:#fff;font-weight:700;padding:12px 26px;border-radius:999px;box-shadow:0 6px 16px rgba(249,115,22,.35);transition:.2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.sub{background:#fff;color:var(--blue);border:2px solid var(--blue);box-shadow:none}
+.btn.small{padding:9px 20px;font-size:.9rem}
+@media(max-width:760px){.nav-links{display:none}}
+/* Hero */
+.hero{background:linear-gradient(135deg,#e0f2fe 0%,#f0fdfa 60%,#ffffff 100%);padding:72px 0 56px}
+.hero-grid{display:grid;grid-template-columns:1.25fr.85fr;gap:36px;align-items:center}
+@media(max-width:860px){.hero-grid{grid-template-columns:1fr}}
+.badge{display:inline-block;background:#fff;border:1px solid var(--line);color:var(--blue);font-weight:700;font-size:.82rem;padding:6px 14px;border-radius:999px;margin-bottom:18px}
+h1{font-size:2.35rem;line-height:1.35;font-weight:800}
+h1.hl{color:var(--sky)}
+.hero p.lead{margin:18px 0 26px;color:var(--muted);font-size:1.05rem}
+.rating{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:28px}
+.rating.chip{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 16px;font-size:.9rem;font-weight:600}
+.rating.stars{color:#f59e0b}
+.price-card{background:var(--card);border-radius:var(--radius);box-shadow:0 14px 34px rgba(2,132,199,.14);padding:28px;border-top:6px solid var(--sky)}
+.price-card h3{font-size:1rem;color:var(--muted)}
+.price-card.price{font-size:2.5rem;font-weight:800;color:var(--blue)}
+.price-card.price small{font-size:1rem;color:var(--muted);font-weight:600}
+.price-card ul{list-style:none;margin:14px 0 20px;font-size:.95rem}
+.price-card li{padding:7px 0;border-bottom:1px dashed var(--line);display:flex;justify-content:space-between;gap:10px}
+.price-card li:last-child{border-bottom:none}
+.note{font-size:.8rem;color:var(--muted)}
+/* Sections */
+section{padding:68px 0}
+section.alt{background:#fff}
+h2{font-size:1.8rem;font-weight:800;text-align:center;margin-bottom:10px}
+.sub{text-align:center;color:var(--muted);margin-bottom:40px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+@media(max-width:860px){.grid3,.grid2{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+section.alt.card{background:var(--bg)}
+.card h3{font-size:1.08rem;margin-bottom:8px;color:var(--blue)}
+.card p{color:var(--muted);font-size:.95rem}
+.trust{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:860px){.trust{grid-template-columns:repeat(2,1fr)}}
+.trust.t{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;text-align:center;font-weight:700;font-size:.95rem}
+.trust.t span{display:block;font-size:.8rem;color:var(--muted);font-weight:500;margin-top:4px}
+/* Price tables */
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:var(--radius);overflow:hidden;font-size:.97rem}
+th,td{padding:13px 16px;border-bottom:1px solid var(--line);text-align:left}
+th{background:var(--aqua);color:var(--blue)}
+td.price{text-align:right;font-weight:700;white-space:nowrap}
+tr:last-child td{border-bottom:none}
+/* Flow */
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+@media(max-width:860px){.flow{grid-template-columns:1fr}}
+.step{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px 18px;text-align:center}
+.step.num{width:40px;height:40px;border-radius:50%;background:var(--sky);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+.step h3{font-size:1rem;margin-bottom:6px}
+.step p{font-size:.86rem;color:var(--muted)}
+/* Profile */
+.profile{display:grid;grid-template-columns:.9fr 1.1fr;gap:32px;align-items:center}
+@media(max-width:860px){.profile{grid-template-columns:1fr}}
+.profile-photo{background:linear-gradient(150deg,var(--sky),var(--teal));border-radius:var(--radius);color:#fff;padding:42px 30px;text-align:center}
+.profile-photo.avatar{width:110px;height:110px;border-radius:50%;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;font-size:2.2rem;font-weight:800;margin:0 auto 16px;border:3px solid rgba(255,255,255,.6)}
+blockquote{font-size:1.25rem;font-weight:700;line-height:1.6;margin-bottom:16px}
+/* Reviews */
+.review.stars{color:#f59e0b;font-size:1.05rem}
+.review.who{margin-top:12px;font-size:.85rem;color:var(--muted)}
+/* Info */
+.info-table td:first-child{font-weight:700;color:var(--blue);width:34%;white-space:nowrap}
+/* CTA */
+.cta{background:linear-gradient(135deg,var(--blue),var(--teal));color:#fff;text-align:center}
+.cta h2{color:#fff}
+.cta p{opacity:.92;margin-bottom:28px}
+.cta.btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+footer{background:var(--ink);color:#cbd5e1;padding:36px 0;font-size:.88rem;text-align:center}
+footer.fname{color:#fff;font-weight:800;font-size:1.05rem;margin-bottom:6px}
+</style>
+</head>
+<body>
+
+<header>
+<div class="wrap nav">
+<a class="logo" href="#">KSS住宅サービス<small>HOUSING SERVICE</small></a>
+<nav class="nav-links">
+<a href="#price">料金</a>
+<a href="#feature">特徴</a>
+<a href="#flow">作業の流れ</a>
+<a href="#profile">店長紹介</a>
+<a href="#review">口コミ</a>
+<a href="#area">対応エリア</a>
+</nav>
+<a class="btn small" href="#booking">ご予約はこちら</a>
+</div>
+</header>
+
+<div class="hero">
+<div class="wrap hero-grid">
+<div>
+<span class="badge">エアコンクリーニング専門 ／ 関東・東海・関西対応</span>
+<h1>誠実・親切・丁寧。<br><span class="hl">初めてでも安心</span>の<br>エアコンクリーニング</h1>
+<p class="lead">エコ洗剤を使うので、小さなお子さまやペットがいるご家庭でも安心。スタッフ全員が同じ基準で作業・対応を行い、「誰が来ても安心できるサービス」を目指しています。</p>
+<div class="rating">
+<div class="chip"><span class="stars">★4.89</span> 口コミ175件（ユアマイスター）</div>
+<div class="chip"><span class="stars">★4.96</span> 口コミ28件（くらしのマーケット）</div>
+</div>
+<a class="btn" href="#booking">予約ページを見る</a>
+<a class="btn sub" href="#price">料金を確認する</a>
+</div>
+<div class="price-card">
+<h3>エアコンクリーニング（壁掛型）</h3>
+<div class="price">6,900<small>円（税込）／1台</small></div>
+<ul>
+<li><span>通常タイプ 2台</span><strong>13,800円</strong></li>
+<li><span>お掃除機能付き 1台</span><strong>12,650円</strong></li>
+<li><span>所要時間の目安</span><strong>約2時間／台</strong></li>
+</ul>
+<p class="note">※料金は時期により変動する場合があります。ご予約時の料金が適用されます。汚れによる追加料金は基本的に発生しません。</p>
+</div>
+</div>
+</div>
+
+<section style="padding:36px 0 8px">
+<div class="wrap trust">
+<div class="t">エコ洗剤使用<span>赤ちゃんや動物にも安心</span></div>
+<div class="t">損害保険加入<span>万が一のときも安心</span></div>
+<div class="t">アフターフォロー<span>7日以内の汚れ残りは再施工無料</span></div>
+<div class="t">出張費無料<span>対応エリア内は無料</span></div>
+</div>
+</section>
+
+<section id="price">
+<div class="wrap">
+<h2>料金のご案内</h2>
+<p class="sub">分かりやすい料金設定です。複数台のご依頼も1台あたり同価格で承ります。</p>
+<div class="grid2">
+<table>
+<tr><th colspan="2">エアコンクリーニング（壁掛型）</th></tr>
+<tr><td>通常タイプ（1台）</td><td class="price">6,900円（税込）</td></tr>
+<tr><td>通常タイプ（2台）</td><td class="price">13,800円（税込）</td></tr>
+<tr><td>通常タイプ（3台）</td><td class="price">20,700円（税込）</td></tr>
+<tr><td>お掃除機能付き（1台）</td><td class="price">12,650円（税込）</td></tr>
+<tr><td>お掃除機能付き（2台）</td><td class="price">25,300円（税込）</td></tr>
+</table>
+<table>
+<tr><th colspan="2">人気のオプション（税込）</th></tr>
+<tr><td>室外機清掃</td><td class="price">5,750円</td></tr>
+<tr><td>ナノソル空間除菌コート</td><td class="price">3,450円</td></tr>
+<tr><td>ドレンホース清掃</td><td class="price">2,875円</td></tr>
+<tr><td>おまとめセット（室外機＋除菌コート）</td><td class="price">5,750円</td></tr>
+<tr><td>まるごとセット（上記3点セット）</td><td class="price">8,050円</td></tr>
+</table>
+</div>
+<p class="note" style="margin-top:14px">※高所作業（床からエアコン下部まで2.3m以上）など、一部追加料金が発生する場合があります。駐車場料金は実費・現金精算となります。最新の料金は各予約ページでご確認ください。</p>
+</div>
+</section>
+
+<section id="feature" class="alt">
+<div class="wrap">
+<h2>KSS住宅サービスの特徴</h2>
+<p class="sub">ただ綺麗にするだけではなく、お客様に寄り添った対応を大切にしています。</p>
+<div class="grid3">
+<div class="card">
+<h3>誰が来ても安心できるサービス</h3>
+<p>スタッフ全員が同じ基準で作業・対応を行う体制づくりを徹底。価格と内容、対応のバランスを重視される方に多くご利用いただいています。</p>
+</div>
+<div class="card">
+<h3>お子さま・ペットがいるご家庭でも安心</h3>
+<p>エコ洗剤を使用し、小さなお子さまやペットがいるご家庭でも安心していただける環境づくりを大切にしています。</p>
+</div>
+<div class="card">
+<h3>安心のアフターフォロー</h3>
+<p>万が一、汚れ残りがあった場合は施工から7日以内の再施工を無料で実施。損害保険にも加入しているので、万が一のときもご安心ください。</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="flow">
+<div class="wrap">
+<h2>作業の流れ</h2>
+<p class="sub">ご依頼から完了まで、丁寧にご説明しながら進めます。</p>
+<div class="flow">
+<div class="step"><div class="num">1</div><h3>動作確認</h3><p>作業場所の確認と、エアコンの動作確認を行います。</p></div>
+<div class="step"><div class="num">2</div><h3>分解と養生</h3><p>カバーやフィルターを取り外し、周辺をしっかり養生します。</p></div>
+<div class="step"><div class="num">3</div><h3>本体・パーツ洗浄</h3><p>内部を高圧洗浄し、外したパーツも丁寧に洗浄します。</p></div>
+<div class="step"><div class="num">4</div><h3>乾燥・組み付け</h3><p>内部と部品を拭き上げ、元通りに組み付けます。</p></div>
+<div class="step"><div class="num">5</div><h3>動作確認</h3><p>お客様とご一緒に動作と仕上がりを確認して完了です。</p></div>
+</div>
+</div>
+</section>
+
+<section id="profile" class="alt">
+<div class="wrap profile">
+<div class="profile-photo">
+<div class="avatar">富</div>
+<div style="font-weight:800;font-size:1.3rem">店長　富岡 裕也</div>
+<div style="opacity:.9;font-size:.9rem;margin-top:6px">KSS住宅サービス 代表</div>
+</div>
+<div>
+<blockquote>「あなたに喜んで頂ける、<br>最高のサービスをお約束いたします！」</blockquote>
+<p style="color:var(--muted)">KSS住宅サービスの富岡と申します。東京都の出身で、愛猫とたわむれるのが日課です。子どもや動物が大好きで、学生の頃は保育士を目指そうと真剣に考えていた想いを活かし、小さなお子さまやペットがいるご家庭でも安心していただける環境づくりを大切にしています。技術はもちろん、な対応で大好評をいただいております。</p>
+</div>
+</div>
+</section>
+
+<section id="review">
+<div class="wrap">
+<h2>お客様の声</h2>
+<p class="sub">実際にご利用いただいたお客様からの口コミの一部です。</p>
+<div class="grid3">
+<div class="card review">
+<div class="stars">★★★★★</div>
+<h3>ピカピカにびっくりです</h3>
+<p>申し込んでから作業日確定までの流れがとてもスムーズ。掃除する前と後の画像を見せていただきましたが、こんなに汚れていたのかとびっくりです。また次もお願いしたいと思います。</p>
+<div class="who">50代のお客様（エアコンクリーニング）</div>
+</div>
+<div class="card review">
+<div class="stars">★★★★★</div>
+<h3>とても綺麗にして頂けました</h3>
+<p>作業に入られる前からとてもご丁寧な説明をしてくださり、時間も早くスムーズ。使用された浴室やお手洗いも清掃してくださり、大変満足しております。</p>
+<div class="who">初めてご利用のお客様（壁掛型 2台）</div>
+</div>
+<div class="card review">
+<div class="stars">★★★★★</div>
+<h3>親切丁寧で暖かい方でした</h3>
+<p>こちらの質問にも分かりやすく答えてくださり、安心してお願いできました。クリーニング後は風が気持ちよく、快適に使えています。</p>
+<div class="who">30代のお客様（エアコンクリーニング）</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="area" class="alt">
+<div class="wrap">
+<h2>店舗情報・対応エリア</h2>
+<p class="sub">対応地域であれば、出張費は無料です。</p>
+<table class="info-table">
+<tr><td>店舗名</td><td>KSS住宅サービス</td></tr>
+<tr><td>店長</td><td>富岡 裕也</td></tr>
+<tr><td>所在地</td><td>東京都板橋区</td></tr>
+<tr><td>営業時間</td><td>8:00〜21:00</td></tr>
+<tr><td>定休日</td><td>不定休</td></tr>
+<tr><td>対応エリア</td><td>関東を中心に、東海・関西エリアにも展開しています。詳しくはご予約時にご確認ください。</td></tr>
+<tr><td>ご案内</td><td>ご希望日の3日以上前を目安にご注文ください。作業前と作業後にはお立合いをお願いしています。</td></tr>
+</table>
+</div>
+</section>
+
+<section id="booking" class="cta">
+<div class="wrap">
+<h2>ご予約・お問い合わせ</h2>
+<p>ご予約は、ご利用中のプラットフォームからそのままお申し込みいただけます。<br>初めてのご依頼も、どうぞお気軽にご相談ください。</p>
+<div class="btns">
+<a class="btn" href="https://yourmystar.jp/c0_1/c1_2/c2_23/d_73218/" target="_blank" rel="noopener">ユアマイスターで予約する</a>
+<a class="btn sub" href="https://curama.jp/352183055/blog/" target="_blank" rel="noopener">くらしのマーケットで見る</a>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="wrap">
+<div class="fname">KSS住宅サービス</div>
+<div>店長：富岡 裕也 ／ 東京都板橋区 ／ 営業時間 8:00〜21:00（不定休）</div>
+<div style="margin-top:10px;opacity:.7">© 2026 KSS住宅サービス All Rights Reserved.</div>
+</div>
+</footer>
+
+</body>
+</html>
