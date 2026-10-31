@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ネット予約｜KSS住宅サービス</title>
+<meta name="description" content="KSS住宅サービスのネット予約フォーム。メニューと希望日、お客様情報を送るだけで予約できます。">
+<style>
+  :root{--blue:#0284c7;--sky:#0ea5e9;--aqua:#e0f2fe;--ink:#0f2a3d;--muted:#5b7183;--bg:#f6fafc;--orange:#f97316;--line:#dbe9f1;--radius:16px;--red:#dc2626}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.7}
+  a{color:var(--blue)}
+  .wrap{max-width:760px;margin:0 auto;padding:0 18px}
+  header{background:#fff;border-bottom:1px solid var(--line);padding:14px 0}
+  .logo{font-weight:800;font-size:1.2rem;color:var(--blue);text-decoration:none}
+  .logo small{display:block;font-size:.66rem;color:var(--muted);letter-spacing:.14em}
+  #steps{display:flex;gap:6px;margin:22px 0 6px}
+  #steps div{flex:1;text-align:center;font-size:.78rem;font-weight:700;color:var(--muted);padding:8px 2px;border-bottom:4px solid var(--line)}
+  #steps div.on{color:var(--blue);border-color:var(--sky)}
+  section.step{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px 22px;margin:16px 0}
+  h1{font-size:1.45rem;margin-bottom:8px}
+  .lead{color:var(--muted);font-size:.93rem;margin-bottom:18px}
+  .group{font-weight:800;color:var(--blue);margin:18px 0 8px;font-size:.95rem}
+  .item{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px}
+  .item .info{flex:1;min-width:0}
+  .item .n{font-weight:700;font-size:.97rem}
+  .item .p{color:var(--blue);font-weight:800}
+  .item .p small{color:var(--muted);font-weight:600;font-size:.78rem}
+  .qty{display:flex;align-items:center;gap:8px;flex:none}
+  .qty button{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:#fff;font-size:1.05rem;font-weight:800;color:var(--blue);cursor:pointer}
+  .qty .n2{min-width:52px;text-align:center;font-weight:700;font-size:.92rem}
+  .totalbar{position:sticky;bottom:84px;background:var(--ink);color:#fff;border-radius:12px;padding:12px 18px;display:flex;justify-content:space-between;font-weight:800;margin-top:14px}
+  label.f{display:block;font-weight:700;margin:18px 0 6px;font-size:.95rem}
+  label.f:first-of-type{margin-top:0}
+  .req{display:inline-block;background:var(--red);color:#fff;font-size:.68rem;font-weight:700;border-radius:6px;padding:1px 7px;margin-left:8px;vertical-align:2px}
+  label.f small{color:var(--muted);font-weight:500;margin-left:8px;font-size:.8rem}
+  input[type=text],input[type=tel],input[type=email],input[type=date],textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:1rem;font-family:inherit;background:#fff}
+  textarea{min-height:96px;resize:vertical}
+  .radios{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .radios label{border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:.9rem;cursor:pointer;background:#fff}
+  .radios input{margin-right:6px;accent-color:var(--sky)}
+  .datebox{border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:12px}
+  .datebox h3{font-size:1rem;margin-bottom:8px;color:var(--blue)}
+  #cta{position:sticky;bottom:0;background:rgba(246,250,252,.95);backdrop-filter:blur(6px);padding:14px 0 20px;display:flex;gap:10px;align-items:center}
+  #next{flex:1;background:var(--orange);color:#fff;border:none;font-weight:800;font-size:1.05rem;padding:15px;border-radius:999px;cursor:pointer;box-shadow:0 6px 16px rgba(249,115,22,.35)}
+  #next:disabled{opacity:.6}
+  #back{flex:none;font-weight:700;color:var(--blue);text-decoration:none;padding:10px 6px}
+  #msg{display:none;background:#fef2f2;border:1px solid #fecaca;color:var(--red);border-radius:10px;padding:12px 14px;font-size:.9rem;margin:12px 0}
+  #msg.show{display:block}
+  .conf{border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px}
+  .conf h2{font-size:1.05rem;color:var(--blue);margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+  .conf h2 a{font-size:.82rem;font-weight:700}
+  .conf dl div{display:flex;gap:12px;padding:6px 0;border-bottom:1px dashed var(--line);font-size:.93rem}
+  .conf dl div:last-child{border-bottom:none}
+  .conf dt{flex:none;width:96px;color:var(--muted);font-weight:600}
+  .done{text-align:center;padding:14px 0}
+  .done .big{font-size:1.5rem;font-weight:800;color:var(--blue);margin-bottom:10px}
+  .done .no{display:inline-block;background:var(--aqua);color:var(--blue);font-weight:800;border-radius:10px;padding:10px 20px;margin:10px 0 16px}
+  footer{color:var(--muted);font-size:.82rem;text-align:center;padding:26px 0 40px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="index.html">KSS住宅サービス<small>HOUSING SERVICE</small></a>
+  </div>
+</header>
+
+<div class="wrap">
+  <div id="steps">
+    <div>1. メニュー</div><div>2. 希望日</div><div>3. お客さま情報</div><div>4. 確認</div>
+  </div>
+  <div id="msg"></div>
+
+  <form id="f" novalidate>
+    <!-- 1. メニュー -->
+    <section class="step" data-step="1">
+      <h1>メニューを選ぶ</h1>
+      <p class="lead">台数を選んでください。料金はすべて税込の目安です（時期により変動する場合があります）。</p>
+      <div id="menuBox"></div>
+      <div class="totalbar"><span>合計（目安）</span><span id="total1">0円</span></div>
+    </section>
+
+    <!-- 2. 希望日 -->
+    <section class="step" data-step="2" hidden>
+      <h1>希望日を選ぶ</h1>
+      <p class="lead">3日以上先の日にちで、候補を3つ選んでください。なるべく日にちをずらしていただけると決まりやすくなります。</p>
+      <div id="dates"></div>
+    </section>
+
+    <!-- 3. お客さま情報 -->
+    <section class="step" data-step="3" hidden>
+      <h1>お客さまの情報</h1>
+      <p class="lead">作業にお伺いするために使います。</p>
+
+      <label class="f" for="i_name">お名前<span class="req">必須</span></label>
+      <input id="i_name" type="text" name="name" autocomplete="name" placeholder="例：板橋 花子">
+
+      <label class="f" for="i_phone">電話番号<span class="req">必須</span></label>
+      <input id="i_phone" type="tel" name="phone" autocomplete="tel" placeholder="例：090-1234-5678">
+
+      <label class="f" for="i_email">メールアドレス<span class="req">必須</span><small>確認メールが届きます</small></label>
+      <input id="i_email" type="email" name="email" autocomplete="email" placeholder="例：hanako@example.com">
+
+      <label class="f" for="i_zip">郵便番号</label>
+      <input id="i_zip" type="text" name="zip" inputmode="numeric" autocomplete="postal-code" placeholder="例：173-0031">
+
+      <label class="f" for="i_addr">ご住所<span class="req">必須</span></label>
+      <input id="i_addr" type="text" name="address" autocomplete="street-address" placeholder="都道府県・市区町村・町名・番地・建物名・部屋番号">
+
+      <label class="f">住まいの種類</label>
+      <div class="radios">
+        <label><input type="radio" name="housing" value="戸建て" checked>戸建て</label>
+        <label><input type="radio" name="housing" value="マンション・アパート">マンション・アパート</label>
+        <label><input type="radio" name="housing" value="その他（店舗・事務所など）">その他（店舗・事務所など）</label>
+      </div>
+
+      <label class="f">駐車場</label>
+      <div class="radios">
+        <label><input type="radio" name="parking" value="敷地内に停められる" checked>敷地内に停められる</label>
+        <label><input type="radio" name="parking" value="なし（近くの有料パーキング）">なし（近くの有料パーキング・代金はご負担）</label>
+        <label><input type="radio" name="parking" value="わからない・相談したい">わからない・相談したい</label>
+      </div>
+
+      <label class="f" for="i_model">エアコンのメーカー・型式・製造年<small>わかる範囲で</small></label>
+      <input id="i_model" type="text" name="model" placeholder="例：ダイキン AN22XXX 2019年製">
+
+      <label class="f" for="i_note">ご要望・ご質問</label>
+      <textarea id="i_note" name="note" placeholder="設置場所、気になること（におい・効きが悪い など）"></textarea>
+    </section>
+
+    <!-- 4. 確認 -->
+    <section class="step" data-step="4" hidden>
+      <h1>内容の確認</h1>
+      <p class="lead">内容をご確認のうえ、「この内容で予約する」を押してください。</p>
+      <div id="confirm"></div>
+    </section>
+
+    <!-- 5. 完了 -->
+    <section class="step" data-step="5" hidden>
+      <div class="done">
+        <div class="big">ご予約を受け付けました</div>
+        <div class="no" id="doneNo">確認メールをご覧ください</div>
+        <p style="color:var(--muted);font-size:.93rem">日程が決まりましたら、店長・富岡よりご連絡いたします。<br>確認メールが届かない場合は、迷惑メールフォルダもご確認ください。</p>
+        <p style="margin-top:18px"><a href="index.html">トップページへ戻る</a></p>
+      </div>
+    </section>
+  </form>
+
+  <div id="cta">
+    <a id="back" href="index.html">← 戻る</a>
+    <button id="next" type="button">希望日を選ぶ</button>
+  </div>
+
+  <footer>© 2026 KSS住宅サービス</footer>
+</div>
+
+<script>
+// 予約を受け取る Google Apps Script（GAS）のURL
+const GAS_URL = "https://script.google.com/macros/s/AKfycbzIp4gQ59c98x8qRD7i19xrQSbkW0GASSfnS-i7VPSXxD83c0hm2daDQvnRtEtld8t9/exec";
+
+const MENU = [
+  { group: "エアコンクリーニング（壁掛型）", items: [
+    { k: "wall",  name: "通常タイプ",       price: 6900,  unit: "台" },
+    { k: "func",  name: "お掃除機能付き",   price: 12650, unit: "台" }
+  ]},
+  { group: "オプション", items: [
+    { k: "outdoor", name: "室外機清掃",                 price: 5750, unit: "点" },
+    { k: "nano",    name: "ナノソル空間除菌コート",     price: 3450, unit: "点" },
+    { k: "drain",   name: "ドレンホース清掃",           price: 2875, unit: "点" },
+    { k: "set1",    name: "おまとめセット（室外機＋除菌コート）", price: 5750, unit: "セット" },
+    { k: "set2",    name: "まるごとセット（室外機＋除菌コート＋ドレンホース）", price: 8050, unit: "セット" }
+  ]}
+];
+const TIMES = ["8時〜12時", "12時〜15時", "15時〜18時", "18時〜21時", "どの時間でもよい"];
+const NEXT_LABEL = { 1: "希望日を選ぶ", 2: "お客さま情報へ", 3: "内容を確認する", 4: "この内容で予約する" };
+const $ = s => document.querySelector(s);
+const yen = n => n.toLocaleString("ja-JP") + "円";
+const qty = {}; // k -> 個数
+MENU.forEach(g => g.items.forEach(it => qty[it.k] = 0));
+
+/* メニュー描画 */
+$("#menuBox").innerHTML = MENU.map(g =>
+  '<div class="group">' + g.group + '</div>' + g.items.map(it =>
+    '<div class="item"><div class="info"><div class="n">' + it.name + '</div>' +
+    '<div class="p">' + yen(it.price) + ' <small>／1' + it.unit + '（税込）</small></div></div>' +
+    '<div class="qty"><button type="button" data-k="' + it.k + '" data-d="-1" aria-label="減らす">−</button>' +
+    '<span class="n2" id="q_' + it.k + '">0' + it.unit + '</span>' +
+    '<button type="button" data-k="' + it.k + '" data-d="1" aria-label="増やす">＋</button></div></div>'
+  ).join("")
+).join("");
+$("#menuBox").addEventListener("click", e => {
+  const b = e.target.closest("button[data-k]"); if (!b) return;
+  const it = MENU.flatMap(g => g.items).find(x => x.k === b.dataset.k);
+  qty[it.k] = Math.max(0, Math.min(20, qty[it.k] + (+b.dataset.d)));
+  $("#q_" + it.k).textContent = qty[it.k] + it.unit;
+  $("#total1").textContent = yen(calc().total);
+});
+
+/* 希望日描画（3日先から選択可） */
+const minDate = new Date(Date.now() + 3 * 864e5);
+const min = minDate.toISOString().slice(0, 10);
+$("#dates").innerHTML = [1, 2, 3].map(i =>
+  '<div class="datebox"><h3>第' + i + '希望' + (i === 1 ? '<span class="req">必須</span>' : '') + '</h3>' +
+  '<input type="date" id="d' + i + '" name="date' + i + '" min="' + min + '">' +
+  '<div class="radios">' + TIMES.map((t, j) =>
+    '<label><input type="radio" name="time' + i + '" value="' + t + '"' + (j === 0 ? " checked" : "") + '>' + t + '</label>'
+  ).join("") + '</div></div>'
+).join("");
+
+function calc() {
+  let total = 0; const lines = [];
+  MENU.forEach(g => g.items.forEach(it => {
+    if (qty[it.k] > 0) { total += it.price * qty[it.k]; lines.push(it.name + " ×" + qty[it.k] + it.unit + "（" + yen(it.price * qty[it.k]) + "）"); }
+  }));
+  return { total, lines };
+}
+function showMsg(t) { const m = $("#msg"); m.textContent = t; m.classList.add("show"); window.scrollTo({ top: 0, behavior: "smooth" }); }
+function hideMsg() { $("#msg").classList.remove("show"); }
+
+function check(n) {
+  hideMsg();
+  if (n === 1 && calc().total === 0) { showMsg("メニューを1つ以上選んでください。"); return false; }
+  if (n === 2 && !$("#d1").value) { showMsg("第1希望日を選んでください。"); return false; }
+  if (n === 3) {
+    const fm = $("#f");
+    if (!fm.name.value.trim()) { showMsg("お名前を入力してください。"); return false; }
+    if (!fm.phone.value.trim()) { showMsg("電話番号を入力してください。"); return false; }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(fm.email.value.trim())) { showMsg("メールアドレスを正しく入力してください。"); return false; }
+    if (!fm.address.value.trim()) { showMsg("ご住所を入力してください。"); return false; }
+  }
+  return true;
+}
+
+function fmtDate(v) {
+  if (!v) return "（なし）";
+  const d = new Date(v + "T00:00:00");
+  return d.toLocaleDateString("ja-JP", { year: "numeric", month: "long", day: "numeric", weekday: "short" });
+}
+function buildConfirm() {
+  const fm = $("#f"), c = calc();
+  const d = i => fmtDate($("#d" + i).value) + " ／ " + fm.querySelector("input[name=time" + i + "]:checked").value;
+  const l = (k, v) => '<div><dt>' + k + '</dt><dd>' + v + '</dd></div>';
+  const goto = n => '<a href="#" data-go="' + n + '">変更する</a>';
+  let h = '<div class="conf"><h2>メニュー' + goto(1) + '</h2><dl>' + c.lines.map(x => l("内容", x)).join("") + l("合計（目安）", "<strong>" + yen(c.total) + "</strong>") + '</dl></div>';
+  h += '<div class="conf"><h2>希望日' + goto(2) + '</h2><dl>' + l("第1希望", d(1)) + l("第2希望", d(2)) + l("第3希望", d(3)) + '</dl></div>';
+  h += '<div class="conf"><h2>お客さま' + goto(3) + '</h2><dl>'
+    + l("お名前", fm.name.value) + l("電話番号", fm.phone.value) + l("メール", fm.email.value)
+    + l("ご住所", (fm.zip.value ? "〒" + fm.zip.value + " " : "") + fm.address.value)
+    + l("住まい", fm.querySelector("input[name=housing]:checked").value)
+    + l("駐車場", fm.querySelector("input[name=parking]:checked").value)
+    + (fm.model.value ? l("エアコン", fm.model.value) : "")
+    + (fm.note.value ? l("ご要望", fm.note.value) : "") + '</dl></div>';
+  $("#confirm").innerHTML = h;
+}
+$("#confirm").addEventListener("click", e => { const a = e.target.closest("[data-go]"); if (a) { e.preventDefault(); go(+a.dataset.go); } });
+
+let step = 1;
+function go(n) {
+  step = n;
+  document.querySelectorAll(".step[data-step]").forEach(s => s.hidden = +s.dataset.step !== n);
+  document.querySelectorAll("#steps div").forEach((s, i) => s.classList.toggle("on", i < n));
+  $("#steps").style.display = n === 5 ? "none" : "";
+  $("#cta").style.display = n === 5 ? "none" : "";
+  $("#next").textContent = NEXT_LABEL[n] || "";
+  $("#back").setAttribute("href", n === 1 ? "index.html" : "#");
+  if (n === 4) buildConfirm();
+  window.scrollTo({ top: 0 });
+}
+$("#back").addEventListener("click", e => { if (step > 1 && step < 5) { e.preventDefault(); go(step - 1); } });
+
+$("#next").addEventListener("click", async () => {
+  if (step < 4) { if (check(step)) go(step + 1); return; }
+  const fm = $("#f"), c = calc(), btn = $("#next");
+  const data = {
+    name: fm.name.value.trim(), phone: fm.phone.value.trim(), email: fm.email.value.trim(),
+    zip: fm.zip.value.trim(), address: fm.address.value.trim(),
+    housing: fm.querySelector("input[name=housing]:checked").value,
+    parking: fm.querySelector("input[name=parking]:checked").value,
+    model: fm.model.value.trim(), note: fm.note.value.trim(),
+    items: c.lines.join(" / "), total: c.total,
+    date1: $("#d1").value, time1: fm.querySelector("input[name=time1]:checked").value,
+    date2: $("#d2").value, time2: fm.querySelector("input[name=time2]:checked").value,
+    date3: $("#d3").value, time3: fm.querySelector("input[name=time3]:checked").value,
+    submitted_at: new Date().toISOString(), page: location.href
+  };
+  btn.disabled = true; btn.textContent = "送信中…"; hideMsg();
+  try {
+    const r = await fetch(GAS_URL, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(data) });
+    const txt = await r.text();
+    let j; try { j = JSON.parse(txt); } catch (_) { j = { ok: true, id: "" }; }
+    if (!j.ok) throw new Error(j.error || "送信失敗");
+    $("#doneNo").textContent = j.id ? "受付番号 " + j.id : "確認メールをご覧ください";
+    go(5);
+  } catch (err) {
+    showMsg("送信できませんでした。お手数ですが、時間をおいてもう一度お試しください。（" + err.message + "）");
+    btn.disabled = false; btn.textContent = NEXT_LABEL[4];
+  }
+});
+
+/* 料金ページなどから ?add=wall のように来たら、そのメニューを1つ入れておく */
+const add = new URLSearchParams(location.search).get("add");
+if (add && add in qty) { qty[add] = 1; const it = MENU.flatMap(g => g.items).find(x => x.k === add); $("#q_" + add).textContent = "1" + it.unit; }
+$("#total1").textContent = yen(calc().total);
+go(1);
+</script>
+</body>
+</html>
